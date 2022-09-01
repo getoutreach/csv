@@ -13,4 +13,8 @@ Please read the [CONTRIBUTING.md](CONTRIBUTING.md) document for guidelines on de
 
 <!--- Block(overview) -->
 
+Standard CSV reader from `enconding/csv` package does [modify the data](https://github.com/golang/go/issues/22746).
+It converts CRLF to just LF.
+This package is fork of the package with CRLF handling removed.
+
 <!--- EndBlock(overview) -->
