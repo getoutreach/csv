@@ -1,6 +1,8 @@
 # See https://help.github.com/articles/about-codeowners/
-* @getoutreach/ce-records-management-services
+* @getoutreach/cad-cdt
 
 ###Block(customCodeowners)
+
+- @getoutreach/ce-records-management-services
 
 ###EndBlock(customCodeowners)

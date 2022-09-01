@@ -9,7 +9,7 @@ version: 1
 service:
   name: csv
   product: Outreach
-  owner: ce-records-management-services
+  owner: cad-cdt
   language: Golang
   framework: stencil
   description: >
@@ -28,7 +28,7 @@ service:
     - key: repo
       value: "https://github.com/getoutreach/csv"
     - key: reporting_team
-      value: "ce-records-management-services"
+      value: "cad-cdt"
     - key: app
       value: "csv"
     - key: name
