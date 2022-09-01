@@ -170,10 +170,8 @@ func (w *Writer) fieldNeedsQuotes(field string) bool {
 				return true
 			}
 		}
-	} else {
-		if strings.ContainsRune(field, w.Comma) || strings.ContainsAny(field, "\"\r\n") {
-			return true
-		}
+	} else if strings.ContainsRune(field, w.Comma) || strings.ContainsAny(field, "\"\r\n") {
+		return true
 	}
 
 	r1, _ := utf8.DecodeRuneInString(field)
