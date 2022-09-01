@@ -1,7 +1,7 @@
 name: csv
-reportingTeam: ce-records-management-services
+reportingTeam: cad-cdt
 description: CSV library forked from encoding/csv without CRLF handling
-slack: rms-ops
+slack: clerk
 library: true
 circleAPIKey: f28170e343fd8526a5d3e6cd427ebc93bbeb2803
 lintroller: silver
@@ -33,10 +33,10 @@ arguments:
     allowMajorVersions: false
     enablePrereleases: false
     prereleasesBranch: ""
-  reportingTeam: ce-records-management-services
+  reportingTeam: cad-cdt
   resources: {}
   service: false
-  slack: rms-ops
+  slack: clerk
   terraform:
     datadog:
       grpc:
@@ -74,11 +74,11 @@ arguments:
     - deploy/mint/%(environment)s/validation/mint-validator-payload
     - deploy/flagship-shared-secret/%(environment)s/authn-flagship-payload
 modules:
-  - name: github.com/getoutreach/stencil-base
-  - name: github.com/getoutreach/stencil-golang
   - name: github.com/getoutreach/stencil-outreach
   - name: github.com/getoutreach/stencil-circleci
   - name: github.com/getoutreach/stencil-actions
+  - name: github.com/getoutreach/stencil-base
+  - name: github.com/getoutreach/stencil-golang
 opsLevel:
   serviceTier: 0
   lifecycle: ""
