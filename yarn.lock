@@ -1728,7 +1728,7 @@ libnpmteam@^4.0.4:
     aproba "^2.0.0"
     npm-registry-fetch "^13.0.0"
 
-libnpmversion@^3.0.7:
+libnpmversion@^3.0.6:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/libnpmversion/-/libnpmversion-3.0.6.tgz#a4a476d38a44d38db9ac424a5e7334479e7fb8b9"
   integrity sha512-+lI+AO7cZwDxyAeWCIR8+n9XEfgSDAqmNbv4zy+H6onGthsk/+E3aa+5zIeBpyG5g268zjpc0qrBch0Q3w0nBA==
@@ -2273,7 +2273,7 @@ npm@^8.3.0:
     libnpmpublish "^6.0.5"
     libnpmsearch "^5.0.4"
     libnpmteam "^4.0.4"
-    libnpmversion "^3.0.7"
+    libnpmversion "^3.0.6"
     make-fetch-happen "^10.2.0"
     minipass "^3.1.6"
     minipass-pipeline "^1.2.4"
