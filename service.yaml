@@ -1,0 +1,90 @@
+name: csv
+reportingTeam: ce-records-management-services
+description: CSV library forked from encoding/csv without CRLF handling
+slack: rms-ops
+library: true
+circleAPIKey: ""
+lintroller: platinum
+tracing: honeycomb
+metrics: datadog
+releaseType: ""
+deployTo:
+  environments: []
+arguments:
+  circleAPIKey: ""
+  commands: []
+  commitGuard: false
+  dependencies:
+    optional: []
+    required: []
+  description: CSV library forked from encoding/csv without CRLF handling
+  grpcClients: []
+  kubernetes:
+    groups: []
+  lintroller: platinum
+  metrics: datadog
+  opslevel:
+    confluenceSpaceKey: ""
+    datadogDashboards:
+      mainLink: ""
+    designDocumentLink: ""
+  oss: false
+  releaseOptions:
+    allowMajorVersions: false
+    enablePrereleases: false
+    prereleasesBranch: ""
+  reportingTeam: ce-records-management-services
+  resources: {}
+  service: false
+  slack: rms-ops
+  terraform:
+    datadog:
+      grpc:
+        evaluationWindow: ""
+        latency:
+          percentiles:
+            highTraffic: 0
+            lowTraffic: 0
+          thresholds:
+            highTraffic: 0
+            lowTraffic: 0
+        lowTrafficCountThreshold: 0
+        qos:
+          thresholds:
+            highTraffic: 0
+            lowTraffic: 0
+        tags: []
+      http:
+        evaluationWindow: ""
+        percentiles:
+          highTraffic: 0
+          lowTraffic: 0
+        thresholds:
+          highTraffic: 0
+          lowCount: 0
+          lowTraffic: 0
+      pods:
+        thresholds:
+          availableLowCount: 0
+  tracing: honeycomb
+  tutorial: false
+  vaultSecrets:
+    - deploy/honeycomb_new/%(environment)s/honeycomb
+    - deploy/launchdarkly/%(environment)s/launchdarkly
+    - deploy/mint/%(environment)s/validation/mint-validator-payload
+    - deploy/flagship-shared-secret/%(environment)s/authn-flagship-payload
+modules:
+  - name: github.com/getoutreach/stencil-golang
+  - name: github.com/getoutreach/stencil-outreach
+  - name: github.com/getoutreach/stencil-circleci
+  - name: github.com/getoutreach/stencil-actions
+  - name: github.com/getoutreach/stencil-base
+opsLevel:
+  serviceTier: 0
+  lifecycle: ""
+  confluenceSpaceKey: ""
+  pagerDutyLink: ""
+  datadogDashboards:
+    mainLink: ""
+    custom: []
+  designDocumentLink: ""
