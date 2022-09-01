@@ -3,7 +3,7 @@ reportingTeam: ce-records-management-services
 description: CSV library forked from encoding/csv without CRLF handling
 slack: rms-ops
 library: true
-circleAPIKey: ""
+circleAPIKey: f28170e343fd8526a5d3e6cd427ebc93bbeb2803
 lintroller: silver
 tracing: honeycomb
 metrics: datadog
