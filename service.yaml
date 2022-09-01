@@ -4,7 +4,7 @@ description: CSV library forked from encoding/csv without CRLF handling
 slack: rms-ops
 library: true
 circleAPIKey: ""
-lintroller: platinum
+lintroller: bronze
 tracing: honeycomb
 metrics: datadog
 releaseType: ""
@@ -21,7 +21,7 @@ arguments:
   grpcClients: []
   kubernetes:
     groups: []
-  lintroller: platinum
+  lintroller: bronze
   metrics: datadog
   opslevel:
     confluenceSpaceKey: ""
@@ -74,11 +74,11 @@ arguments:
     - deploy/mint/%(environment)s/validation/mint-validator-payload
     - deploy/flagship-shared-secret/%(environment)s/authn-flagship-payload
 modules:
+  - name: github.com/getoutreach/stencil-base
   - name: github.com/getoutreach/stencil-golang
   - name: github.com/getoutreach/stencil-outreach
   - name: github.com/getoutreach/stencil-circleci
   - name: github.com/getoutreach/stencil-actions
-  - name: github.com/getoutreach/stencil-base
 opsLevel:
   serviceTier: 0
   lifecycle: ""

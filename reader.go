@@ -1,3 +1,5 @@
+// Copyright 2022 Outreach Corporation. All Rights Reserved.
+
 // Copyright 2011 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
@@ -49,6 +51,8 @@
 //
 //	{`Multi-line
 //	field`, `comma is ,`}
+
+// Description: CSV reader forked from the standard encoding/csv package without CRLF handling
 package csv
 
 import (
@@ -61,7 +65,7 @@ import (
 	"unicode/utf8"
 )
 
-// A ParseError is returned for parsing errors.
+// ParseError is returned for parsing errors.
 // Line numbers are 1-indexed and columns are 0-indexed.
 type ParseError struct {
 	StartLine int   // Line where the record starts

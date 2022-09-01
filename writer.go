@@ -1,6 +1,10 @@
+// Copyright 2022 Outreach Corporation. All Rights Reserved.
+
 // Copyright 2011 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
+
+// Description: CSV writer forked from the standard encoding/csv package
 
 package csv
 
