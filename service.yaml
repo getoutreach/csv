@@ -4,7 +4,7 @@ description: CSV library forked from encoding/csv without CRLF handling
 slack: rms-ops
 library: true
 circleAPIKey: ""
-lintroller: bronze
+lintroller: silver
 tracing: honeycomb
 metrics: datadog
 releaseType: ""
@@ -21,7 +21,7 @@ arguments:
   grpcClients: []
   kubernetes:
     groups: []
-  lintroller: bronze
+  lintroller: silver
   metrics: datadog
   opslevel:
     confluenceSpaceKey: ""
