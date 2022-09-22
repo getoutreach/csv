@@ -1,15 +1,4 @@
 name: csv
-reportingTeam: cad-cdt
-description: CSV library forked from encoding/csv without CRLF handling
-slack: clerk
-library: true
-circleAPIKey: f28170e343fd8526a5d3e6cd427ebc93bbeb2803
-lintroller: silver
-tracing: honeycomb
-metrics: datadog
-releaseType: ""
-deployTo:
-  environments: []
 arguments:
   circleAPIKey: f28170e343fd8526a5d3e6cd427ebc93bbeb2803
   commands: []
@@ -18,10 +7,11 @@ arguments:
     optional: []
     required: []
   description: CSV library forked from encoding/csv without CRLF handling
+  go-protoc-imports: []
   grpcClients: []
   kubernetes:
     groups: []
-  lintroller: silver
+  lintroller: platinum
   metrics: datadog
   opslevel:
     confluenceSpaceKey: ""
@@ -66,8 +56,9 @@ arguments:
       pods:
         thresholds:
           availableLowCount: 0
-  tracing: honeycomb
+  tracing: opentelemetry
   tutorial: false
+  validation: false
   vaultSecrets:
     - deploy/honeycomb_new/%(environment)s/honeycomb
     - deploy/launchdarkly/%(environment)s/launchdarkly
@@ -75,16 +66,15 @@ arguments:
     - deploy/flagship-shared-secret/%(environment)s/authn-flagship-payload
 modules:
   - name: github.com/getoutreach/stencil-outreach
+    channel: rc
   - name: github.com/getoutreach/stencil-circleci
+    channel: rc
   - name: github.com/getoutreach/stencil-actions
+    channel: rc
+  - name: github.com/getoutreach/stencil-discovery
+    channel: rc
   - name: github.com/getoutreach/stencil-base
+    channel: rc
   - name: github.com/getoutreach/stencil-golang
-opsLevel:
-  serviceTier: 0
-  lifecycle: ""
-  confluenceSpaceKey: ""
-  pagerDutyLink: ""
-  datadogDashboards:
-    mainLink: ""
-    custom: []
-  designDocumentLink: ""
+    channel: rc
+migrated: true

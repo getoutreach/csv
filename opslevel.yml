@@ -14,17 +14,17 @@ service:
   framework: stencil
   description: >
     CSV library forked from encoding/csv without CRLF handling
-  ###Block(extraServiceMetadata)
-  ###EndBlock(extraServiceMetadata)
+  ## <<Stencil::Block(extraServiceMetadata)>>
+  ## <</Stencil::Block>>
   aliases:
-    ###Block(extraAliases)
+    ## <<Stencil::Block(extraAliases)>>
 
-    ###EndBlock(extraAliases)
+    ## <</Stencil::Block>>
     - csv
   tags:
-    ###Block(extraTags)
+    ## <<Stencil::Block(extraTags)>>
 
-    ###EndBlock(extraTags)
+    ## <</Stencil::Block>>
     - key: repo
       value: "https://github.com/getoutreach/csv"
     - key: reporting_team
@@ -34,7 +34,7 @@ service:
     - key: name
       value: "csv"
     - key: stencil_version
-      value: "v1.21.1"
+      value: "v1.28.0-rc.3"
     - key: golang_version
       value: "1.17.9"
     - key: tutorial
