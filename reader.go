@@ -88,19 +88,23 @@ func (e *ParseError) Unwrap() error { return e.Err }
 
 // These are the errors that can be returned in ParseError.Err.
 var (
+	// ErrTrailingComma extra delimiter at the end of line error
 	ErrTrailingComma = errors.New("extra delimiter at end of line") // Deprecated: No longer used.
-	ErrBareQuote     = errors.New("bare \" in non-quoted-field")
-	ErrQuote         = errors.New("extraneous or missing \" in quoted-field")
-	ErrFieldCount    = errors.New("wrong number of fields")
+	// ErrBareQuote bare quote in non-quoted-field error
+	ErrBareQuote = errors.New("bare \" in non-quoted-field")
+	// ErrQuote mismatched quote error
+	ErrQuote = errors.New("extraneous or missing \" in quoted-field")
+	// ErrFieldCount incorrect number of fields error
+	ErrFieldCount = errors.New("wrong number of fields")
+	// ErrInvalidDelim invalid delimieter error
+	ErrInvalidDelim = errors.New("csv: invalid field or comment delimiter")
 )
-
-var errInvalidDelim = errors.New("csv: invalid field or comment delimiter")
 
 func validDelim(r rune) bool {
 	return r != 0 && r != '"' && r != '\r' && r != '\n' && utf8.ValidRune(r) && r != utf8.RuneError
 }
 
-// A Reader reads records from a CSV-encoded file.
+// Reader reads records from a CSV-encoded file.
 //
 // As returned by NewReader, a Reader expects input conforming to RFC 4180.
 // The exported fields can be changed to customize the details before the
@@ -220,7 +224,7 @@ func (r *Reader) InputOffset() int64 {
 	return r.offset
 }
 
-// pos holds the position of a field in the current line.
+// position holds the position of a field in the current line.
 type position struct {
 	line, col int
 }
@@ -287,10 +291,11 @@ func nextRune(b []byte) rune {
 	return r
 }
 
+// readRecord: read a record line
 // nolint:gocyclo // Why: Copied logic from encoding/csv.
 func (r *Reader) readRecord(dst []string) ([]string, error) {
 	if r.Comma == r.Comment || !validDelim(r.Comma) || (r.Comment != 0 && !validDelim(r.Comment)) {
-		return nil, errInvalidDelim
+		return nil, ErrInvalidDelim
 	}
 
 	// Read line (automatically skipping past empty lines and any comments).

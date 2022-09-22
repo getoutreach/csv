@@ -16,7 +16,7 @@ import (
 	"unicode/utf8"
 )
 
-// A Writer writes records using CSV encoding.
+// Writer writes records using CSV encoding.
 //
 // As returned by NewWriter, a Writer writes records terminated by a
 // newline and uses ',' as the field delimiter. The exported fields can be
@@ -51,7 +51,7 @@ func NewWriter(w io.Writer) *Writer {
 // that the record is written to the underlying io.Writer.
 func (w *Writer) Write(record []string) error {
 	if !validDelim(w.Comma) {
-		return errInvalidDelim
+		return ErrInvalidDelim
 	}
 
 	for n, field := range record {

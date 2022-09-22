@@ -371,36 +371,36 @@ field"`,
 }, {
 	Name:   "BadComma1",
 	Comma:  '\n',
-	Errors: []error{errInvalidDelim},
+	Errors: []error{ErrInvalidDelim},
 }, {
 	Name:   "BadComma2",
 	Comma:  '\r',
-	Errors: []error{errInvalidDelim},
+	Errors: []error{ErrInvalidDelim},
 }, {
 	Name:   "BadComma3",
 	Comma:  '"',
-	Errors: []error{errInvalidDelim},
+	Errors: []error{ErrInvalidDelim},
 }, {
 	Name:   "BadComma4",
 	Comma:  utf8.RuneError,
-	Errors: []error{errInvalidDelim},
+	Errors: []error{ErrInvalidDelim},
 }, {
 	Name:    "BadComment1",
 	Comment: '\n',
-	Errors:  []error{errInvalidDelim},
+	Errors:  []error{ErrInvalidDelim},
 }, {
 	Name:    "BadComment2",
 	Comment: '\r',
-	Errors:  []error{errInvalidDelim},
+	Errors:  []error{ErrInvalidDelim},
 }, {
 	Name:    "BadComment3",
 	Comment: utf8.RuneError,
-	Errors:  []error{errInvalidDelim},
+	Errors:  []error{ErrInvalidDelim},
 }, {
 	Name:    "BadCommaComment",
 	Comma:   'X',
 	Comment: 'X',
-	Errors:  []error{errInvalidDelim},
+	Errors:  []error{ErrInvalidDelim},
 }}
 
 func TestRead(t *testing.T) {
