@@ -1,8 +1,8 @@
 # See https://help.github.com/articles/about-codeowners/
 * @getoutreach/cad-cdt
 
-###Block(customCodeowners)
+## <<Stencil::Block(customCodeowners)>>
 
 - @getoutreach/ce-records-management-services
 
-###EndBlock(customCodeowners)
+## <</Stencil::Block>>
