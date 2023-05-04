@@ -23,7 +23,7 @@ arguments:
     allowMajorVersions: false
     enablePrereleases: false
     prereleasesBranch: ""
-  reportingTeam: cad-cdt
+  reportingTeam: fnd-qss
   resources: {}
   service: false
   slack: clerk
