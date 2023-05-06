@@ -9,7 +9,7 @@ version: 1
 service:
   name: csv
   product: Outreach
-  owner: cad-cdt
+  owner: fnd-qss
   language: Golang
   framework: stencil
   description: >
@@ -28,7 +28,7 @@ service:
     - key: repo
       value: "https://github.com/getoutreach/csv"
     - key: reporting_team
-      value: "cad-cdt"
+      value: "fnd-qss"
     - key: app
       value: "csv"
     - key: name
