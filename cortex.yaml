@@ -1,0 +1,61 @@
+# Docs: https://docs.cortex.io/docs/reference/basics/entities#service-entities
+
+openapi: 3.0.0
+info:
+  title: csv
+  description: >
+    CSV library forked from encoding/csv without CRLF handling
+  x-cortex-type: service
+  x-cortex-slack:
+    channels:
+      - name: fnd-qss-alerts
+        notificationsEnabled: true
+      - name: qss-oncall
+        notificationsEnabled: false
+      - name: qss-support
+        notificationsEnabled: false
+  x-cortex-owners:
+    - type: group
+      name: fnd-qss
+      provider: CORTEX
+  x-cortex-tag: csv
+  x-cortex-git:
+    github:
+      repository: getoutreach/csv
+  x-cortex-oncall:
+    pagerduty:
+      id: PE832UD
+      type: SERVICE
+  x-cortex-link:
+    ## These are useful documentation links for this service. Please fill in the customLinks block if you have additional documentation links.
+    ## name: The name of the link
+    ## type: Choose one type from (dashboard,documentation,healthcheck,logs,metrics,runbook)
+    ## url: The link url
+    ## description(optional): Description to this link
+    - name: API Docs
+      type: api_documentation
+      url: https://engdocs.outreach.cloud/github.com/getoutreach/csv#section-readme
+    ## <<Stencil::Block(customLinks)>>
+    ## <</Stencil::Block>>
+  x-cortex-custom-metadata:
+    app: csv
+    name: csv
+    repo: https://github.com/getoutreach/csv
+    framework: stencil
+    language: Golang
+    stencil_version: v1.40.1
+    golang_version: 1.23.4
+    cli: false
+    service: false
+    product: Outreach
+    lifecycle: in_development
+    ## <<Stencil::Block(extraAliases)>>
+    ## <</Stencil::Block>>
+    reporting_team: fnd-qss
+    lintroller: platinum
+  x-cortex-groups:
+    - lifecycle:in_development
+    - product:Outreach
+    - language:Golang
+    - framework:stencil
+    - engOrg:fnd
