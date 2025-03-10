@@ -73,7 +73,7 @@ func (w *Writer) Write(record []string) error {
 		if err := w.w.WriteByte('"'); err != nil {
 			return err
 		}
-		for len(field) > 0 {
+		for field != "" {
 			// Search for special characters.
 			i := strings.IndexAny(field, "\"\r\n")
 			if i < 0 {
@@ -87,7 +87,7 @@ func (w *Writer) Write(record []string) error {
 			field = field[i:]
 
 			// Encode the special character.
-			if len(field) > 0 {
+			if field != "" {
 				var err error
 				switch field[0] {
 				case '"':
