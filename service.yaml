@@ -1,5 +1,7 @@
 name: csv
 arguments:
+  ciOptions:
+    skipDocker: true
   circleAPIKey: f28170e343fd8526a5d3e6cd427ebc93bbeb2803
   commands: []
   commitGuard: false
