@@ -291,7 +291,7 @@ func nextRune(b []byte) rune {
 	return r
 }
 
-// readRecord: read a record line
+// readRecord reads a record line
 // nolint:gocyclo // Why: Copied logic from encoding/csv.
 func (r *Reader) readRecord(dst []string) ([]string, error) {
 	if r.Comma == r.Comment || !validDelim(r.Comma) || (r.Comment != 0 && !validDelim(r.Comment)) {
@@ -365,70 +365,70 @@ parseField:
 				continue parseField
 			}
 			break parseField
-		} else {
-			// Quoted string field
-			fieldPos := pos
-			line = line[quoteLen:]
-			pos.col += quoteLen
-			for {
-				i := bytes.IndexByte(line, '"')
-				switch {
-				case i >= 0:
-					// Hit next quote.
-					r.recordBuffer = append(r.recordBuffer, line[:i]...)
-					line = line[i+quoteLen:]
-					pos.col += i + quoteLen
-					switch rn := nextRune(line); {
-					case rn == '"':
-						// `""` sequence (append quote).
-						r.recordBuffer = append(r.recordBuffer, '"')
-						line = line[quoteLen:]
-						pos.col += quoteLen
-					case rn == r.Comma:
-						// `",` sequence (end of field).
-						line = line[commaLen:]
-						pos.col += commaLen
-						r.fieldIndexes = append(r.fieldIndexes, len(r.recordBuffer))
-						r.fieldPositions = append(r.fieldPositions, fieldPos)
-						continue parseField
-					case lengthCRLF(line) == len(line):
-						// `"\n` sequence (end of line).
-						r.fieldIndexes = append(r.fieldIndexes, len(r.recordBuffer))
-						r.fieldPositions = append(r.fieldPositions, fieldPos)
-						break parseField
-					case r.LazyQuotes:
-						// `"` sequence (bare quote).
-						r.recordBuffer = append(r.recordBuffer, '"')
-					default:
-						// `"*` sequence (invalid non-escaped quote).
-						err = &ParseError{StartLine: recLine, Line: r.numLine, Column: pos.col - quoteLen, Err: ErrQuote}
-						break parseField
-					}
-				case len(line) > 0:
-					// Hit end of line (copy all data so far).
-					r.recordBuffer = append(r.recordBuffer, line...)
-					if errRead != nil {
-						break parseField
-					}
-					pos.col += len(line)
-					line, errRead = r.readLine()
-					if len(line) > 0 {
-						pos.line++
-						pos.col = 1
-					}
-					if errors.Is(errRead, io.EOF) {
-						errRead = nil
-					}
-				default:
-					// Abrupt end of file (EOF or error).
-					if !r.LazyQuotes && errRead == nil {
-						err = &ParseError{StartLine: recLine, Line: pos.line, Column: pos.col, Err: ErrQuote}
-						break parseField
-					}
+		}
+
+		// Quoted string field
+		fieldPos := pos
+		line = line[quoteLen:]
+		pos.col += quoteLen
+		for {
+			i := bytes.IndexByte(line, '"')
+			switch {
+			case i >= 0:
+				// Hit next quote.
+				r.recordBuffer = append(r.recordBuffer, line[:i]...)
+				line = line[i+quoteLen:]
+				pos.col += i + quoteLen
+				switch rn := nextRune(line); {
+				case rn == '"':
+					// `""` sequence (append quote).
+					r.recordBuffer = append(r.recordBuffer, '"')
+					line = line[quoteLen:]
+					pos.col += quoteLen
+				case rn == r.Comma:
+					// `",` sequence (end of field).
+					line = line[commaLen:]
+					pos.col += commaLen
+					r.fieldIndexes = append(r.fieldIndexes, len(r.recordBuffer))
+					r.fieldPositions = append(r.fieldPositions, fieldPos)
+					continue parseField // nolint:gocritic // Why: do not want to change
+				case lengthCRLF(line) == len(line):
+					// `"\n` sequence (end of line).
 					r.fieldIndexes = append(r.fieldIndexes, len(r.recordBuffer))
 					r.fieldPositions = append(r.fieldPositions, fieldPos)
 					break parseField
+				case r.LazyQuotes:
+					// `"` sequence (bare quote).
+					r.recordBuffer = append(r.recordBuffer, '"')
+				default:
+					// `"*` sequence (invalid non-escaped quote).
+					err = &ParseError{StartLine: recLine, Line: r.numLine, Column: pos.col - quoteLen, Err: ErrQuote}
+					break parseField
 				}
+			case len(line) > 0:
+				// Hit end of line (copy all data so far).
+				r.recordBuffer = append(r.recordBuffer, line...)
+				if errRead != nil {
+					break parseField
+				}
+				pos.col += len(line)
+				line, errRead = r.readLine()
+				if len(line) > 0 {
+					pos.line++
+					pos.col = 1
+				}
+				if errors.Is(errRead, io.EOF) {
+					errRead = nil
+				}
+			default:
+				// Abrupt end of file (EOF or error).
+				if !r.LazyQuotes && errRead == nil {
+					err = &ParseError{StartLine: recLine, Line: pos.line, Column: pos.col, Err: ErrQuote}
+					break parseField
+				}
+				r.fieldIndexes = append(r.fieldIndexes, len(r.recordBuffer))
+				r.fieldPositions = append(r.fieldPositions, fieldPos)
+				break parseField
 			}
 		}
 	}

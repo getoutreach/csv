@@ -533,7 +533,7 @@ func makePositions(text string) (positions [][][2]int, errPositions map[int][2]i
 	line, col := 1, 1
 	recNum := 0
 
-	for len(text) > 0 {
+	for text != "" {
 		r, size := utf8.DecodeRuneInString(text)
 		switch r {
 		case '\n':

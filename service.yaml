@@ -1,5 +1,7 @@
 name: csv
 arguments:
+  ciOptions:
+    skipDocker: true
   circleAPIKey: f28170e343fd8526a5d3e6cd427ebc93bbeb2803
   commands: []
   commitGuard: false
@@ -66,15 +68,9 @@ arguments:
     - deploy/flagship-shared-secret/%(environment)s/authn-flagship-payload
 modules:
   - name: github.com/getoutreach/stencil-outreach
-    channel: rc
   - name: github.com/getoutreach/stencil-circleci
-    channel: rc
   - name: github.com/getoutreach/stencil-actions
-    channel: rc
   - name: github.com/getoutreach/stencil-discovery
-    channel: rc
   - name: github.com/getoutreach/stencil-base
-    channel: rc
   - name: github.com/getoutreach/stencil-golang
-    channel: rc
 migrated: true
